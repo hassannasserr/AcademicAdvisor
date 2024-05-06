@@ -1,5 +1,6 @@
 package app.CoursesSearch;
 
+import app.CourseEdit.CourseEditApplication;
 import app.Dashboard.DashBoardApplication;
 import app.StudentRegisteration.StRegApplication;
 import app.login.LoginApplication;
@@ -11,6 +12,7 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 
 import java.sql.*;
+import java.util.Optional;
 
 public class CoursesSearchController {
     @FXML
@@ -138,23 +140,36 @@ public class CoursesSearchController {
             }
         });
         EditCor.setOnMouseClicked((event) -> {
-            System.out.println("Edit Course");
+            try {
+                Stage currentStage = (Stage) HomePage.getScene().getWindow();
+                currentStage.close();
+                CourseEditApplication courseEditApplication = new CourseEditApplication();
+                Stage newStage = new Stage();
+                courseEditApplication.start(newStage);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
         });
         AnswerReq.setOnMouseClicked((event) -> {
             System.out.println("Answer Request");
         });
         LogOut.setOnMouseClicked((event) -> {
-            try {
-                Stage currentStage = (Stage) HomePage.getScene().getWindow();
-                currentStage.close();
-                LoginApplication loginApplication = new LoginApplication();
-                Stage newStage = new Stage();
-                loginApplication.start(newStage);
-            } catch (Exception e) {
-                e.printStackTrace();
+            Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+            alert.setTitle("Confirmation Logout");
+            alert.setHeaderText("Are you sure you want to log out?");
+            alert.setContentText("Choose your option.");
+            Optional<ButtonType> result = alert.showAndWait();
+            if (result.isPresent() && result.get() == ButtonType.OK){
+                try {
+                    Stage currentStage = (Stage) LogOut.getScene().getWindow();
+                    currentStage.close();
+                    LoginApplication loginApplication = new LoginApplication();
+                    Stage newStage = new Stage();
+                    loginApplication.start(newStage);
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
             }
-
-
         });
     }
 }
