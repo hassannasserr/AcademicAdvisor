@@ -1,5 +1,6 @@
 package app.CourseEdit;
 
+import app.AnswerRequests.AnswerRequestsApplication;
 import app.CoursesSearch.CoursesSearchApplication;
 import app.Dashboard.DashBoardApplication;
 import app.StudentRegisteration.StRegApplication;
@@ -26,19 +27,11 @@ public class CourseEditController {
     private Label AnswerReq;
     @FXML
     private Label LogOut;
-   @FXML
-    Button button ;
+
     @FXML
     void initialize() {
         DashBoard();
-        button.setOnAction(e -> {
-            Alert alert = new Alert(Alert.AlertType.INFORMATION);
-            alert.setTitle("Information Dialog");
-            alert.setHeaderText(null);
-            alert.setContentText("You clicked the button!");
 
-            alert.showAndWait();
-        });
     }
     @FXML
     private void DashBoard() {
@@ -87,7 +80,15 @@ public class CourseEditController {
             }
         });
         AnswerReq.setOnMouseClicked((event) -> {
-            System.out.println("Answer Request");
+            try {
+                Stage currentStage = (Stage) HomePage.getScene().getWindow();
+                currentStage.close();
+                AnswerRequestsApplication answerRequestsApplication = new AnswerRequestsApplication();
+                Stage newStage = new Stage();
+                answerRequestsApplication.start(newStage);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
         });
         LogOut.setOnMouseClicked((event) -> {
             Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
