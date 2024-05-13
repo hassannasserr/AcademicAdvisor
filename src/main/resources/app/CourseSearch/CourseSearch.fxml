@@ -2,16 +2,15 @@
 
 <?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.VBox?>
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="600.0" prefWidth="800.0" style="-fx-background-color: #E5E7E9;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="app.AnswerRequests.AnswerRequestsController">
+<AnchorPane prefHeight="600.0" prefWidth="800.0" style="-fx-background-color: #E5E7E9;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="app.CourseSearch.CourseSearchController">
     <children>
         <ImageView fitHeight="480.0" fitWidth="498.0" layoutX="243.0" layoutY="60.0" opacity="0.07" pickOnBounds="true" preserveRatio="true">
             <image>
@@ -108,20 +107,23 @@
                 <Image url="@logout.png" />
             </image>
         </ImageView>
-      <ImageView fx:id="send" fitHeight="43.0" fitWidth="30.0" layoutX="471.0" layoutY="417.0" pickOnBounds="true" preserveRatio="true">
+      <Label alignment="CENTER" layoutX="337.0" layoutY="24.0" prefHeight="36.0" prefWidth="297.0" text="Prerequiste Search" textFill="#15044e">
+         <font>
+            <Font name="Baskerville Old Face" size="29.0" />
+         </font>
+      </Label>
+      <Rectangle arcHeight="50.0" arcWidth="50.0" fill="#15044e" height="36.0" layoutX="219.0" layoutY="148.0" stroke="BLACK" strokeType="INSIDE" width="530.0" />
+      <TextField fx:id="course" layoutX="243.0" layoutY="153.0" promptText="Enter The Course" style="-fx-background-radius: 50;" />
+      <Label layoutX="400.0" layoutY="157.0" prefHeight="18.0" prefWidth="402.0" text="Please Enter The course that you want to know what is this prerequiste for" textFill="#c5c2f3">
+         <font>
+            <Font name="Arial" size="10.0" />
+         </font>
+      </Label>
+      <TextArea fx:id="Result" layoutX="225.0" layoutY="209.0" prefHeight="200.0" prefWidth="518.0" style="-fx-background-color: #E5E7E9;" />
+      <ImageView fx:id="Search" fitHeight="43.0" fitWidth="36.0" layoutX="752.0" layoutY="145.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@send-message.png" />
+            <Image url="@search-interface-symbol.png" />
          </image>
       </ImageView>
-      <TextField fx:id="message" layoutX="296.0" layoutY="420.0" promptText="enter  your message" style="-fx-background-radius: 50;">
-         <font>
-            <Font name="Arial" size="13.0" />
-         </font>
-      </TextField>
-        <ScrollPane fx:id="scrollPane" layoutX="275.0" layoutY="160.0" prefHeight="242.0" prefWidth="406.0" style="-fx-background-color: C5C2F3;">
-            <content>
-                <VBox fx:id="vBox" prefHeight="234.0" prefWidth="389.0" />
-            </content>
-        </ScrollPane>
     </children>
 </AnchorPane>

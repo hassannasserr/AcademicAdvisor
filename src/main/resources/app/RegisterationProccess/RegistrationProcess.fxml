@@ -1,17 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.VBox?>
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="600.0" prefWidth="800.0" style="-fx-background-color: #E5E7E9;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="app.AnswerRequests.AnswerRequestsController">
+<AnchorPane prefHeight="600.0" prefWidth="800.0" style="-fx-background-color: #E5E7E9;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="app.RegistrationProcess.RegistrationProcessController">
     <children>
         <ImageView fitHeight="480.0" fitWidth="498.0" layoutX="243.0" layoutY="60.0" opacity="0.07" pickOnBounds="true" preserveRatio="true">
             <image>
@@ -108,20 +109,71 @@
                 <Image url="@logout.png" />
             </image>
         </ImageView>
-      <ImageView fx:id="send" fitHeight="43.0" fitWidth="30.0" layoutX="471.0" layoutY="417.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@send-message.png" />
-         </image>
-      </ImageView>
-      <TextField fx:id="message" layoutX="296.0" layoutY="420.0" promptText="enter  your message" style="-fx-background-radius: 50;">
+      <Label layoutX="370.0" layoutY="24.0" prefHeight="18.0" prefWidth="240.0" text="Registration  Process" textFill="#15044e">
          <font>
-            <Font name="Arial" size="13.0" />
+            <Font name="Baskerville Old Face" size="28.0" />
          </font>
+      </Label>
+      <ComboBox fx:id="Semesters" layoutX="220.0" layoutY="137.0" prefWidth="150.0" promptText="Select Semester" style="-fx-background-radius: 50;" />
+      <Label layoutX="217.0" layoutY="168.0" prefHeight="18.0" prefWidth="339.0" text="*Please Select The Semester That you want to Register into" textFill="#15044e">
+         <font>
+            <Font name="Arial" size="12.0" />
+         </font>
+      </Label>
+      <TextArea fx:id="AvCo" layoutX="215.0" layoutY="248.0" prefHeight="349.0" prefWidth="255.0" style="-fx-background-color: C5C2F3;" />
+      <Label layoutX="223.0" layoutY="208.0" prefHeight="18.0" prefWidth="240.0" text="Available Courses" textFill="#15044e">
+         <font>
+            <Font name="Baskerville Old Face" size="28.0" />
+         </font>
+      </Label>
+      <Button fx:id="Done" layoutX="502.0" layoutY="195.0" mnemonicParsing="false" style="-fx-background-radius: 15; -fx-background-color: #15044E;" text="Show Available Courses" textFill="WHITE">
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </Button>
+      <Label fx:id="error" layoutX="412.0" layoutY="127.0" prefHeight="18.0" prefWidth="178.0" textFill="#df0e0e" />
+      <Label layoutX="490.0" layoutY="256.0" prefHeight="34.0" prefWidth="271.0" text="If You Want to Continue please fill this fields" textFill="#15044e">
+         <font>
+            <Font name="Baskerville Old Face" size="15.0" />
+         </font>
+      </Label>
+      <TextField fx:id="GPA" layoutX="612.0" layoutY="315.0" style="-fx-background-radius: 50;">
+         <cursor>
+            <Cursor fx:constant="TEXT" />
+         </cursor>
       </TextField>
-        <ScrollPane fx:id="scrollPane" layoutX="275.0" layoutY="160.0" prefHeight="242.0" prefWidth="406.0" style="-fx-background-color: C5C2F3;">
-            <content>
-                <VBox fx:id="vBox" prefHeight="234.0" prefWidth="389.0" />
-            </content>
-        </ScrollPane>
+      <TextField fx:id="CH" layoutX="612.0" layoutY="366.0" style="-fx-background-radius: 50;">
+         <cursor>
+            <Cursor fx:constant="TEXT" />
+         </cursor>
+      </TextField>
+      <Label layoutX="83.0" layoutY="119.0" text="Label" />
+      <Label layoutX="470.0" layoutY="320.0" text="Student GPA" textFill="#15044e">
+         <font>
+            <Font name="Arial" size="12.0" />
+         </font>
+      </Label>
+      <Label layoutX="469.0" layoutY="371.0" prefHeight="16.0" prefWidth="142.0" text="Student Credit Hours" textFill="#15044e">
+         <font>
+            <Font name="Arial" size="12.0" />
+         </font>
+      </Label>
+      <ComboBox fx:id="Semesters1" layoutX="611.0" layoutY="419.0" prefWidth="150.0" promptText="Select Semester" style="-fx-background-radius: 50;" />
+      <Label layoutX="469.0" layoutY="424.0" prefHeight="16.0" prefWidth="142.0" text="Register Semsester" textFill="#15044e">
+         <font>
+            <Font name="Arial" size="12.0" />
+         </font>
+      </Label>
+      <Button fx:id="next" layoutX="566.0" layoutY="465.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="120.0" style="-fx-background-radius: 15; -fx-background-color: #15044E;" text="Next" textFill="WHITE">
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </Button>
+      <Label fx:id="error1" contentDisplay="CENTER" layoutX="518.0" layoutY="291.0" prefHeight="18.0" prefWidth="216.0" textFill="#ff0202" />
+      <Label fx:id="animation" alignment="CENTER" contentDisplay="CENTER" layoutX="536.0" layoutY="521.0" prefHeight="18.0" prefWidth="178.0" textFill="#15044e">
+         <font>
+            <Font name="Baskerville Old Face" size="20.0" />
+         </font>
+      </Label>
     </children>
 </AnchorPane>

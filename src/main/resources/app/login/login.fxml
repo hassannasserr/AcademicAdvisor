@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Polyline?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="600.0" prefWidth="800.0" style="-fx-background-color: #FFF;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="app.login.LoginController">
+   <children>
+      <ImageView fitHeight="550.0" fitWidth="596.0" layoutX="151.0" layoutY="16.0" opacity="0.07" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@pngwing.com.png" />
+         </image>
+      </ImageView>
+      <Label alignment="CENTER" layoutX="24.0" layoutY="283.0" prefHeight="52.0" prefWidth="326.0" text="Academic Advisor System" textAlignment="RIGHT" textFill="#15044e">
+         <font>
+            <Font name="Baskerville Old Face" size="24.0" />
+         </font>
+      </Label>
+      <Rectangle arcHeight="50.0" arcWidth="50.0" fill="#e5e7e9" height="421.0" layoutX="469.0" layoutY="103.0" stroke="WHITE" strokeType="INSIDE" width="299.0" />
+      <Label fx:id="wrong" alignment="CENTER" contentDisplay="CENTER" layoutX="502.0" layoutY="349.0" prefHeight="10.0" prefWidth="233.0" textFill="#ec0000">
+         <font>
+            <Font size="13.0" />
+         </font>
+      </Label>
+      <PasswordField fx:id="pincode" layoutX="521.0" layoutY="314.0" prefHeight="18.0" prefWidth="194.0" promptText="Pin Code" style="-fx-background-radius: 15;" />
+      <Button fx:id="action" layoutX="559.0" layoutY="381.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="118.0" style="-fx-background-color: #15044E; -fx-background-radius: 15;" text="Login" textFill="#e5e7e9">
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </Button>
+      <Label fx:id="action1" alignment="TOP_LEFT" contentDisplay="TOP" layoutX="535.0" layoutY="435.0" prefHeight="18.0" prefWidth="180.0" text="If you are student click here:" textFill="#15044e">
+         <font>
+            <Font name="Baskerville Old Face" size="14.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </Label>
+      <Label layoutX="496.0" layoutY="197.0" text="Job Number" textFill="#15044e">
+         <font>
+            <Font name="Book Antiqua" size="12.0" />
+         </font>
+      </Label>
+      <Label layoutX="496.0" layoutY="291.0" text="Pin Code" textFill="#15044e">
+         <font>
+            <Font name="Book Antiqua" size="12.0" />
+         </font>
+      </Label>
+      <TextField fx:id="jobnum" layoutX="521.0" layoutY="223.0" prefHeight="27.0" prefWidth="194.0" promptText="Job Number" style="-fx-background-radius: 15;">
+         <cursor>
+            <Cursor fx:constant="TEXT" />
+         </cursor>
+      </TextField>
+      <Label alignment="TOP_LEFT" layoutX="483.0" layoutY="145.0" prefHeight="52.0" prefWidth="326.0" text="Login page" textAlignment="RIGHT" textFill="#15044e">
+         <font>
+            <Font name="Baskerville Old Face" size="19.0" />
+         </font>
+      </Label>
+      <ImageView fitHeight="116.0" fitWidth="95.0" layoutX="66.0" layoutY="150.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@pngwing.com.png" />
+         </image>
+      </ImageView>
+      <Label layoutX="57.0" layoutY="269.0" prefHeight="18.0" prefWidth="162.0" text="Welcome to" textFill="#827de1">
+         <font>
+            <Font name="Baskerville Old Face" size="24.0" />
+         </font>
+      </Label>
+      <Polyline fill="#15044e" layoutX="81.0" layoutY="465.0" points="-89.19999694824219, 94.4000244140625, 726.4000244140625, 83.20001220703125, 726.4000244140625, 117.60003662109375, -81.0, 117.60003662109375" strokeType="INSIDE" />
+      <Polyline fill="#c5c2f3" layoutX="82.0" layoutY="485.0" points="-89.19999694824219, 94.4000244140625, 726.4000244140625, 83.20001220703125, 726.4000244140625, 117.60003662109375, -89.19998168945312, 117.60003662109375" stroke="#c5c2f3" strokeType="INSIDE" />
+   </children>
+</AnchorPane>
