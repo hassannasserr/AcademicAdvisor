@@ -175,5 +175,13 @@
             <Font name="Baskerville Old Face" size="20.0" />
          </font>
       </Label>
+      <ImageView fx:id="Back" fitHeight="44.0" fitWidth="54.0" layoutX="216.0" layoutY="19.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../RP2/fast-backward.png" />
+         </image>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </ImageView>
     </children>
 </AnchorPane>

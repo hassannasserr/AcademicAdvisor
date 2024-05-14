@@ -17,7 +17,7 @@ public class CoursesSearchApplication extends Application {
     public void start(Stage pstage) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(CoursesSearchApplication.class.getResource("/app/CoursesSearch/CoursesSearch.fxml"));
         Scene scene = new Scene(fxmlLoader.load());
-        pstage.setTitle("Hello!");
+        pstage.setTitle("Course Search Page");
         pstage.setScene(scene);
         pstage.setResizable(false);
         pstage.show();

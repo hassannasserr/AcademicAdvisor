@@ -11,6 +11,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.Label;
+import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 
 import java.util.Optional;
@@ -30,17 +31,31 @@ public class DashboardController {
     private Label LogOut;
   @FXML
     private void initialize(){
-        HomePage.setOnMouseClicked((event) -> {
-            try {
-                Stage currentStage = (Stage) HomePage.getScene().getWindow();
-                currentStage.close();
-                DashBoardApplication dashBoardApplication = new DashBoardApplication();
-                Stage newStage = new Stage();
-                dashBoardApplication.start(newStage);
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
-        });
+      HomePage.setOnMouseClicked((event) -> {
+          try {
+              // Reset the text fill of all labels to black
+              HomePage.setTextFill(Color.BLACK);
+              StudentReg.setTextFill(Color.BLACK);
+              CourseSea.setTextFill(Color.BLACK);
+              EditCor.setTextFill(Color.BLACK);
+              AnswerReq.setTextFill(Color.BLACK);
+              LogOut.setTextFill(Color.BLACK);
+
+              // Change the text fill of the HomePage label to light blue
+              HomePage.setTextFill(Color.web("#ADD8E6"));
+
+              Stage currentStage = (Stage) HomePage.getScene().getWindow();
+              currentStage.close();
+              DashBoardApplication dashBoardApplication = new DashBoardApplication();
+              Stage newStage = new Stage();
+              dashBoardApplication.start(newStage);
+          } catch (Exception e) {
+              e.printStackTrace();
+          }
+      });
+
+
+
         StudentReg.setOnMouseClicked((event) -> {
             try {
                 Stage currentStage = (Stage) HomePage.getScene().getWindow();

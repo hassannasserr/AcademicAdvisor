@@ -18,6 +18,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 
@@ -59,6 +60,8 @@ public class RegistrationProcessController extends StRegController {
     private Label error1;
     @FXML
     private Label animation;
+    @FXML
+    private ImageView Back;
 
     public RegistrationProcessController() {
 
@@ -68,6 +71,26 @@ public class RegistrationProcessController extends StRegController {
     private void initialize(){
         DashBoard();
         AvCo.setEditable(false);
+        next.setOnMouseEntered((event) -> {
+            next.setOpacity(0.5);
+            next.setScaleX(1.1); // Increase the width of the button by 10%
+            next.setScaleY(1.1); // Increase the height of the button by 10%
+        });
+        next.setOnMouseExited((event) -> {
+            next.setOpacity(1);
+            next.setScaleX(1);
+            next.setScaleY(1);
+        });
+        Done.setOnMouseEntered((event) -> {
+            Done.setOpacity(0.5);
+            Done.setScaleX(1.1); // Increase the width of the button by 10%
+            Done.setScaleY(1.1); // Increase the height of the button by 10%
+        });
+        Done.setOnMouseExited((event) -> {
+            Done.setOpacity(1);
+            Done.setScaleX(1);
+            Done.setScaleY(1);
+        });
         Semesters.getItems().addAll(1, 2, 3, 4, 5, 6, 7, 8);
         Semesters1.getItems().addAll(1, 2, 3, 4, 5, 6, 7, 8);
         Done.setOnAction((event) -> {
@@ -102,135 +125,155 @@ public class RegistrationProcessController extends StRegController {
                 }
                 AvCo.setText(String.join("\n", availableCourses));
             }
-            next.setOnAction((event1) -> {
-                boolean hasError = false;
+        });
+        next.setOnAction((event1) -> {
+            boolean hasError = false;
 
-                if (Semesters1.getValue() == null) {
-                    error1.setText("Please select a semester");
-                    hasError = true;
-                }
-                if (GPA.getText().isEmpty()) {
-                    error1.setText("Please enter your GPA");
-                    hasError = true;
-                }
-                if(!GPA.getText().isEmpty()){
-                    try {
-                        Double gpa = Double.parseDouble(GPA.getText());
-                        if (gpa < 0 || gpa > 4) {
-                            error1.setText("Please enter a valid GPA");
-                            hasError = true;
-                        }
-                    } catch (NumberFormatException e) {
+            if (Semesters1.getValue() == null) {
+                error1.setText("Please select a semester");
+                hasError = true;
+            }
+            if (GPA.getText().isEmpty()) {
+                error1.setText("Please enter your GPA");
+                hasError = true;
+            }
+            if(!GPA.getText().isEmpty()){
+                try {
+                    Double gpa = Double.parseDouble(GPA.getText());
+                    if (gpa < 0 || gpa > 4) {
                         error1.setText("Please enter a valid GPA");
                         hasError = true;
                     }
-                }
-                if (CH.getText().trim().isEmpty() || CH.getText().isEmpty()) {
-                    error1.setText("Please enter your credit hours");
+                } catch (NumberFormatException e) {
+                    error1.setText("Please enter a valid GPA");
                     hasError = true;
                 }
-                if(!CH.getText().isEmpty()){
-                    try {
-                        Integer creditHours = Integer.parseInt(CH.getText());
-                        if (creditHours < 0 || creditHours > 143) {
-                            error1.setText("Please enter a valid credit hours");
-                            hasError = true;
-                        }
-                    } catch (NumberFormatException e) {
+            }
+            if (CH.getText().trim().isEmpty() || CH.getText().isEmpty()) {
+                error1.setText("Please enter your credit hours");
+                hasError = true;
+            }
+            if(!CH.getText().isEmpty()){
+                try {
+                    Integer creditHours = Integer.parseInt(CH.getText());
+                    if (creditHours < 0 || creditHours > 143) {
                         error1.setText("Please enter a valid credit hours");
                         hasError = true;
                     }
+                } catch (NumberFormatException e) {
+                    error1.setText("Please enter a valid credit hours");
+                    hasError = true;
                 }
-                if (!hasError) {
-                    // Clear the text of the animation label
-                    animation.setText("");
+            }
+            if (!hasError) {
+                // Clear the text of the animation label
+                animation.setText("");
 
-                    // Create a string for the animation text
-                    String animationText = "Processing...";
+                // Create a string for the animation text
+                String animationText = "Processing...";
 
-                    // Create a timeline to animate the text
-                    Timeline timeline = new Timeline();
-                    for (int i = 0; i < animationText.length(); i++) {
-                        // Create a pause transition with a duration of 200 milliseconds
-                        PauseTransition pause = new PauseTransition(Duration.millis(200));
+                // Create a timeline to animate the text
+                Timeline timeline = new Timeline();
+                for (int i = 0; i < animationText.length(); i++) {
+                    // Create a pause transition with a duration of 200 milliseconds
+                    PauseTransition pause = new PauseTransition(Duration.millis(200));
 
-                        // Set the action to perform after the pause
-                        int finalI = i;
-                        pause.setOnFinished(event3 -> {
-                            // Add one character to the animation label's text
-                            animation.setText(animation.getText() + animationText.charAt(finalI));
-                        });
-
-                        // Add the pause transition to the timeline
-                        timeline.getKeyFrames().add(new KeyFrame(Duration.millis(i * 200), pause.getOnFinished()));
-                    }
-
-                    // Set the action to perform after the timeline
-                    timeline.setOnFinished(event4 -> {
-                        // Clear the error label
-                        error1.setText("");
-
-                        // Navigate to the next page here
-                        // ...
+                    // Set the action to perform after the pause
+                    int finalI = i;
+                    pause.setOnFinished(event3 -> {
+                        // Add one character to the animation label's text
+                        animation.setText(animation.getText() + animationText.charAt(finalI));
                     });
 
-                    // Start the timeline
-                    timeline.play();
-                    Integer selectedSemester = Semesters1.getValue();
-                    List<String> availableCourses = new ArrayList<>();
-                    CourseGraph courseGraph = new CourseGraph();
-                    try {
-                        Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/project_schema", "root", "DmjJ8GE_ps.up4J");
-                        PreparedStatement ps = conn.prepareStatement("SELECT CourseCode FROM courses WHERE CourseSemester = ?");
-                        ps.setInt(1, selectedSemester);
-                        ResultSet rs = ps.executeQuery();
-                        List<String> semesterCourses = new ArrayList<>();
-                        while (rs.next()) {
-                            semesterCourses.add(rs.getString("CourseCode"));
-                        }
-                        System.out.println("codeList: " + codeList);
-                        System.out.println("semesterCourses: " + semesterCourses);
-                        List<String> courseCodes = courseGraph.getAvailableCourses(semesterCourses, codeList);
-                        for (String courseCode : courseCodes) {
-                            availableCourses.add(getCourseNameByCode(courseCode));
-                        }
-                        rs.close();
-                        ps.close();
-                        conn.close();
-                    } catch (SQLException e) {
-                        e.printStackTrace();
-                    }
-                    // after the animation ended navigate to the next page
-                    // after the animation ended navigate to the next page
-                    try {
-                        Stage currentStage = (Stage) HomePage.getScene().getWindow();
-                        currentStage.close();
-
-                        // Load the FXML file
-                        FXMLLoader loader = new FXMLLoader(getClass().getResource("/app/RP2/RP2.fxml"));
-                        Parent root = loader.load();
-
-                        // Get the controller
-                        RP2Controller rp2Controller = loader.getController();
-
-                        // Pass the parameters
-                        rp2Controller.initData(availableCourses, selectedSemester, Integer.parseInt(CH.getText()), Double.parseDouble(GPA.getText()));
-
-                        // Initialize the controller
-                        rp2Controller.initialize();
-
-                        // Show the scene
-                        Stage newStage = new Stage();
-                        newStage.setScene(new Scene(root));
-                        newStage.show();
-                    } catch (Exception e) {
-                        e.printStackTrace();
-                    }
-
-
+                    // Add the pause transition to the timeline
+                    timeline.getKeyFrames().add(new KeyFrame(Duration.millis(i * 200), pause.getOnFinished()));
                 }
-            });
 
+                // Set the action to perform after the timeline
+                timeline.setOnFinished(event4 -> {
+                    // Clear the error label
+                    error1.setText("");
+
+                    // Navigate to the next page here
+                    // ...
+                });
+
+                // Start the timeline
+                timeline.play();
+                Integer selectedSemester = Semesters1.getValue();
+                List<String> availableCourses = new ArrayList<>();
+                CourseGraph courseGraph = new CourseGraph();
+                try {
+                    Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/project_schema", "root", "DmjJ8GE_ps.up4J");
+                    PreparedStatement ps = conn.prepareStatement("SELECT CourseCode FROM courses WHERE CourseSemester = ?");
+                    ps.setInt(1, selectedSemester);
+                    ResultSet rs = ps.executeQuery();
+                    List<String> semesterCourses = new ArrayList<>();
+                    while (rs.next()) {
+                        semesterCourses.add(rs.getString("CourseCode"));
+                    }
+
+
+                    List<String> courseCodes = courseGraph.getAvailableCourses(semesterCourses, codeList);
+                    for (String courseCode : courseCodes) {
+                        availableCourses.add(getCourseNameByCode(courseCode));
+                    }
+                    rs.close();
+                    ps.close();
+                    conn.close();
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
+                // after the animation ended navigate to the next page
+                // after the animation ended navigate to the next page
+                try {
+                    Stage currentStage = (Stage) HomePage.getScene().getWindow();
+                    currentStage.close();
+
+                    // Load the FXML file
+                    FXMLLoader loader = new FXMLLoader(getClass().getResource("/app/RP2/RP2.fxml"));
+                    Parent root = loader.load();
+
+                    // Get the controller
+                    RP2Controller rp2Controller = loader.getController();
+
+                    // Pass the parameters
+                    rp2Controller.initData(availableCourses, selectedSemester, Integer.parseInt(CH.getText()), Double.parseDouble(GPA.getText()));
+
+                    // Initialize the controller
+                    rp2Controller.initialize();
+
+                    // Show the scene
+                    Stage newStage = new Stage();
+                    newStage.setScene(new Scene(root));
+                    newStage.show();
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+
+
+            }
+        });
+        Back.setOnMouseEntered((event) -> {
+            Back.setOpacity(0.5);
+            Back.setScaleX(1.1); // Increase the width of the button by 10%
+            Back.setScaleY(1.1); // Increase the height of the button by 10%
+        });
+        Back.setOnMouseExited((event) -> {
+            Back.setOpacity(1);
+            Back.setScaleX(1);
+            Back.setScaleY(1);
+        });
+        Back.setOnMouseClicked((event) -> {
+            try {
+                Stage currentStage = (Stage) Back.getScene().getWindow();
+                currentStage.close();
+                StRegApplication stRegApplication = new StRegApplication();
+                Stage newStage = new Stage();
+                stRegApplication.start(newStage);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
         });
     }
     @FXML

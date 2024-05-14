@@ -49,6 +49,12 @@ public class LoginController extends DataBaseConnection {
                         }
                     }
         });
+        action.setOnMouseEntered((event) -> {
+            action.setStyle("-fx-background-color: #C5C2F3");
+        });
+        action.setOnMouseExited((event) -> {
+            action.setStyle("-fx-background-color: #15044E");
+        });
         action1.setOnMouseClicked((event) -> {
             Stage stage = (Stage) action1.getScene().getWindow();
             stage.close();

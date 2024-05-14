@@ -57,7 +57,6 @@ public class CourseGraph {
         }
         List<String> unavailableCourses = new ArrayList<>(semesterCourses);
         unavailableCourses.removeAll(availableCourses);
-        System.out.println("Unavailable Courses: " + unavailableCourses);
         return unavailableCourses;
     }
 
@@ -117,8 +116,6 @@ public class CourseGraph {
                 }
             }
         }
-        System.out.println("processedCourses: " + processedCourses);
-        System.out.println("All Prerequisites: " + allPrerequisites);
 
         return allPrerequisites;
     }

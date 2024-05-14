@@ -5,7 +5,6 @@ import javafx.scene.layout.VBox;
 
 import java.io.*;
 import java.net.Socket;
-import java.net.ServerSocket;
 
 public class Client {
     private Socket socket;

@@ -1,6 +1,7 @@
 package app.StudentRegisteration;
 import app.AnswerRequests.AnswerRequestsApplication;
 import app.Connection.DataBaseConnection;
+import app.CourseEdit.CourseEditApplication;
 import app.CourseSearch.CourseSearchApplication;
 import app.CoursesSearch.CoursesSearchApplication;
 import app.Dashboard.DashBoardApplication;
@@ -52,7 +53,7 @@ public class StRegController {
     @FXML
     private Button nextpage;
    public static List<String> codeList = new ArrayList<>();
-   public List<String> gradeList = new ArrayList<>();
+   public  static List<String> gradeList = new ArrayList<>();
     @FXML
     private void initialize(){
         DashBoard();
@@ -74,11 +75,18 @@ public class StRegController {
 
             else {
                 StringBuilder sb = new StringBuilder();
-                for (String code : codeList) {
+                for (int i = 0; i < codeList.size(); i++) {
+                    String code = codeList.get(i);
                     String courseName = getCourseNameByCode(code);
-                    sb.append("Code: ").append(code).append(", Course Name: ").append(courseName).append("\n");
+                    if (courseName.equals(code + " Code Not Found")) {
+                        error.setText("Invalid course code");
+                        Next.setVisible(false);
+                        nextpage.setVisible(false);
+                        return;
+                    }
+                    String grade = gradeList.get(i);
+                    sb.append("Code: ").append(code).append(", Course Name: ").append(courseName).append(", Grade: ").append(grade).append("\n");
                 }
-                sb.append("Grade List: ").append(gradeList.toString());
                 Rec.setText(sb.toString());
             }
         });
@@ -93,6 +101,8 @@ public class StRegController {
                 Rec.clear();
                 error.setText("");
                 StID.clear();
+                Next.setVisible(true);
+                nextpage.setVisible(true);
             }
         });
         nextpage.setOnAction(e -> {
@@ -111,6 +121,38 @@ public class StRegController {
 
             }
         });
+        Next.setOnMouseEntered(e -> {
+            Next.setOpacity(0.5);
+            Next.setScaleX(1.1); // Increase the width of the button by 10%
+            Next.setScaleY(1.1); // Increase the height of the button by 10%
+        });
+        Next.setOnMouseExited(e -> {
+            Next.setOpacity(1);
+            Next.setScaleX(1.0); // Reset the width of the button to its original size
+            Next.setScaleY(1.0); // Reset the height of the button to its original size
+        });
+        nextpage.setOnMouseEntered(e -> {
+            nextpage.setOpacity(0.5);
+            nextpage.setScaleX(1.1); // Increase the width of the button by 10%
+            nextpage.setScaleY(1.1); // Increase the height of the button by 10%
+        });
+        nextpage.setOnMouseExited(e -> {
+            nextpage.setOpacity(1);
+            nextpage.setScaleX(1.0); // Reset the width of the button to its original size
+            nextpage.setScaleY(1.0); // Reset the height of the button to its original size
+
+        });
+        tryAgain.setOnMouseEntered(e -> {
+            tryAgain.setOpacity(0.5);
+            tryAgain.setScaleX(1.1); // Increase the width of the button by 10%
+            tryAgain.setScaleY(1.1); // Increase the height of the button by 10%
+        });
+        tryAgain.setOnMouseExited(e -> {
+            tryAgain.setOpacity(1);
+            tryAgain.setScaleX(1.0); // Reset the width of the button to its original size
+            tryAgain.setScaleY(1.0); // Reset the height of the button to its original size
+        });
+
     }
 
     @FXML
@@ -218,9 +260,9 @@ public class StRegController {
             try {
                 Stage currentStage = (Stage) HomePage.getScene().getWindow();
                 currentStage.close();
-                LoginApplication loginApplication = new LoginApplication();
+                CourseEditApplication courseEditApplication = new CourseEditApplication();
                 Stage newStage = new Stage();
-                loginApplication.start(newStage);
+                courseEditApplication.start(newStage);
             } catch (Exception e) {
                 e.printStackTrace();
             }        });

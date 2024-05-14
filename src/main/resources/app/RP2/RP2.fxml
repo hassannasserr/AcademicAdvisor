@@ -112,13 +112,13 @@
             <Font name="Baskerville Old Face" size="28.0" />
          </font>
       </Label>
-      <TextArea fx:id="Coruses" layoutX="215.0" layoutY="275.0" prefHeight="226.0" prefWidth="262.0" />
-      <Label fx:id="note1" layoutX="243.0" layoutY="108.0" prefHeight="18.0" prefWidth="375.0" textFill="#15044e">
+      <TextArea fx:id="Coruses" layoutX="231.0" layoutY="251.0" prefHeight="226.0" prefWidth="548.0" />
+      <Label fx:id="note1" layoutX="243.0" layoutY="108.0" prefHeight="18.0" prefWidth="469.0" textFill="#15044e">
          <font>
             <Font name="Arial" size="13.0" />
          </font>
       </Label>
-      <Label fx:id="note2" layoutX="243.0" layoutY="127.0" prefHeight="18.0" prefWidth="375.0" textFill="#15044e">
+      <Label fx:id="note2" layoutX="243.0" layoutY="127.0" prefHeight="18.0" prefWidth="476.0" textFill="#15044e">
          <font>
             <Font name="Arial" size="13.0" />
          </font>
@@ -133,15 +133,34 @@
             <Font name="Arial" size="13.0" />
          </font>
       </Label>
-      <Label alignment="CENTER" layoutX="231.0" layoutY="231.0" prefHeight="34.0" prefWidth="249.0" text="Courses List" textFill="#15044e">
+      <Label alignment="CENTER" layoutX="368.0" layoutY="216.0" prefHeight="34.0" prefWidth="249.0" text="Courses List" textFill="#15044e">
          <font>
             <Font name="Baskerville Old Face" size="23.0" />
          </font>
       </Label>
-      <Button fx:id="recmo" alignment="CENTER" layoutX="486.0" layoutY="302.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="130.0" style="-fx-background-color: #15044E; -fx-background-radius: 50;" text="Recommendations" textFill="WHITE">
+      <Button fx:id="recmo" alignment="CENTER" layoutX="303.0" layoutY="493.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="130.0" style="-fx-background-color: #15044E; -fx-background-radius: 50;" text="Recommendations" textFill="WHITE">
          <cursor>
             <Cursor fx:constant="HAND" />
          </cursor>
+         <font>
+            <Font name="Arial" size="12.0" />
+         </font>
       </Button>
+      <Button fx:id="Export" alignment="CENTER" layoutX="572.0" layoutY="493.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="130.0" style="-fx-background-color: Green; -fx-background-radius: 50;" text="Export" textFill="WHITE">
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+         <font>
+            <Font name="Arial Black" size="12.0" />
+         </font>
+      </Button>
+      <ImageView fx:id="Back" fitHeight="42.0" fitWidth="42.0" layoutX="222.0" layoutY="24.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@fast-backward.png" />
+         </image>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </ImageView>
     </children>
 </AnchorPane>

@@ -6,11 +6,23 @@ import app.CourseSearch.CourseSearchApplication;
 import app.CoursesSearch.CoursesSearchApplication;
 import app.Dashboard.DashBoardApplication;
 import app.RegistrationProcess.CourseGraph;
+import app.RegistrationProcess.RegistrationProcessApplication;
 import app.StudentRegisteration.StRegApplication;
 import app.login.LoginApplication;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
+import javafx.scene.image.ImageView;
+import javafx.stage.FileChooser;
 import javafx.stage.Stage;
+import org.apache.poi.xssf.usermodel.XSSFCell;
+import org.apache.poi.xssf.usermodel.XSSFRow;
+import org.apache.poi.xssf.usermodel.XSSFSheet;
+import org.apache.poi.xssf.usermodel.XSSFWorkbook;
+
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.sql.*;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -31,6 +43,11 @@ public class RP2Controller {
     private Label AnswerReq;
     @FXML
     private Label LogOut;
+    @FXML
+    private ImageView Back;
+    @FXML
+    private Button Export;
+
 
     List<String> availableCourses = new ArrayList<>();
 
@@ -63,9 +80,23 @@ public class RP2Controller {
     @FXML
     public void initialize() {
         DashBoard();
+
+        recmo.setOnMouseEntered(e -> {
+        recmo.setOpacity(0.5);
+        recmo.setScaleX(1.1); // Increase the width of the button by 10%
+        recmo.setScaleY(1.1); // Increase the height of the button by 10%
+        });
+        recmo.setOnMouseExited(e -> {
+            recmo.setOpacity(1);
+            recmo.setScaleX(1);
+            recmo.setScaleY(1);
+        });
         Coruses.setEditable(false);
         if (GPA < 2.0) {
             note3.setText("You only can take 12 credit hours");
+        }
+        else if (GPA >= 3.0) {
+            note3.setText("You can take 18 credit hours");
         }
         if(semester== 1.0){
            note1.setText("You are in the same progress with Your colleagues");
@@ -110,15 +141,15 @@ public class RP2Controller {
          }
 
          Coruses.setText(String.join("\n", availableCourses));
-       if(GPA>2.0){
-           recmo.setVisible(false);
-       }
+        Coruses.textProperty().addListener((observable, oldValue, newValue) -> {
+            Export.setVisible(!newValue.isEmpty());
+        });
+
         recmo.setOnAction(e -> {
-           // clear the text area
-            Coruses.clear();
+            // Append the recommendation message to the Coruses text area
+            Coruses.appendText("\n\nWe Recommend to Register these courses");
 
             // Create an instance of CourseGraph
-
             CourseGraph courseGraph = new CourseGraph();
 
             // Create a map to store the prerequisites count for each course
@@ -136,12 +167,112 @@ public class RP2Controller {
             // Sort the list in descending order by the prerequisites count
             entries.sort(Map.Entry.<String, Integer>comparingByValue().reversed());
 
-            // Get the first 4 entries from the sorted list
-            for (int i = 0; i < 4 && i < entries.size(); i++) {
-                Map.Entry<String, Integer> entry = entries.get(i);
-                Coruses.appendText("\n" + entry.getKey() + " has " + entry.getValue() + " prerequisites");
+            // Create a connection to the database
+            try (            Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/project_schema", "root", "DmjJ8GE_ps.up4J");
+            ) {
+                //
+                //Prepare a statement to fetch the course rate
+                PreparedStatement ps = conn.prepareStatement("SELECT CourseRate FROM courses WHERE CourseName = ?");
+
+                // Get the first 4 entries from the sorted list
+                int loopLimit = GPA < 2.0 ? 4 : entries.size();
+
+                for (int i = 0; i < loopLimit && i < entries.size(); i++) {
+                    Map.Entry<String, Integer> entry = entries.get(i);
+                    String courseName = entry.getKey();
+                    int prerequisitesCount = entry.getValue();
+
+                    // Set the course name parameter in the prepared statement
+                    ps.setString(1, courseName);
+
+                    // Execute the query and get the result
+                    ResultSet rs = ps.executeQuery();
+
+                    // If a result is returned, get the course rate
+                    String courseRate = String.valueOf(rs.next() ? rs.getString("CourseRate") : 0);
+
+                    // Append the course name, prerequisites count, and course rate to the Coruses text area
+                    Coruses.appendText("\n" + courseName + " has " + prerequisitesCount + " prerequisites and a rate of " + courseRate);
+                }
+                recmo.setDisable(true);
+            } catch (SQLException sqlException) {
+                sqlException.printStackTrace();
             }
         });
+        Back.setOnMouseEntered((event) -> {
+            Back.setOpacity(0.5);
+            Back.setScaleX(1.1); // Increase the width of the button by 10%
+            Back.setScaleY(1.1); // Increase the height of the button by 10%
+        });
+        Back.setOnMouseExited((event) -> {
+            Back.setOpacity(1);
+            Back.setScaleX(1);
+            Back.setScaleY(1);
+        });
+        Back.setOnMouseClicked((event) -> {
+            try {
+                Stage currentStage = (Stage) Back.getScene().getWindow();
+                currentStage.close();
+                RegistrationProcessApplication registrationProcessApplication = new RegistrationProcessApplication();
+                Stage newStage = new Stage();
+                registrationProcessApplication.start(newStage);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        });
+        Export.setOnMouseEntered((event) -> {
+            Export.setOpacity(0.5);
+            Export.setScaleX(1.1); // Increase the width of the button by 10%
+            Export.setScaleY(1.1); // Increase the height of the button by 10%
+        });
+        Export.setOnMouseExited((event) -> {
+            Export.setOpacity(1);
+            Export.setScaleX(1);
+            Export.setScaleY(1);
+        });
+        Export.setOnAction((event) -> {
+            Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+            alert.setTitle("Confirmation Export");
+            alert.setHeaderText("Are you sure you want to export the result in excel sheet? ");
+            alert.setContentText("Choose your option.");
+            Optional<ButtonType> result = alert.showAndWait();
+            if (result.isPresent() && result.get() == ButtonType.OK){
+                // Create a new workbook
+                XSSFWorkbook workbook = new XSSFWorkbook();
+                // Create a new sheet
+                XSSFSheet sheet = workbook.createSheet("Results");
+                // Split the Result text into lines
+                String[] lines = Coruses.getText().split("\n");
+                for (int i = 0; i < lines.length; i++) {
+                    // Create a new row for each line
+                    XSSFRow row = sheet.createRow(i);
+                    // Create a new cell in the row and set its value to the line
+                    XSSFCell cell = row.createCell(0);
+                    cell.setCellValue(lines[i]);
+                }
+                // Open a file chooser dialog
+                FileChooser fileChooser = new FileChooser();
+                fileChooser.getExtensionFilters().add(new FileChooser.ExtensionFilter("Excel files (*.xlsx)", "*.xlsx"));
+                File file = fileChooser.showSaveDialog(Export.getScene().getWindow());
+                if (file != null) {
+                    try (FileOutputStream outputStream = new FileOutputStream(file)) {
+                        // Write the workbook to the file
+                        workbook.write(outputStream);
+                        // Close the workbook
+                        workbook.close();
+                        // Display a message to the user
+                        Alert alert1 = new Alert(Alert.AlertType.INFORMATION);
+                        alert1.setTitle("Export Result");
+                        alert1.setHeaderText("Export Result");
+                        alert1.setContentText("The result has been exported successfully.");
+                        alert1.showAndWait();
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+                }
+            }
+        });
+
 
     }
 
