@@ -118,12 +118,12 @@
             <Font name="Arial" size="13.0" />
          </font>
       </Label>
-      <Label fx:id="note2" layoutX="243.0" layoutY="127.0" prefHeight="18.0" prefWidth="476.0" textFill="#15044e">
+      <Label fx:id="note2" layoutX="243.0" layoutY="127.0" prefHeight="18.0" prefWidth="533.0" textFill="#15044e">
          <font>
             <Font name="Arial" size="13.0" />
          </font>
       </Label>
-      <Label fx:id="note3" layoutX="243.0" layoutY="150.0" prefHeight="18.0" prefWidth="375.0" textFill="#15044e">
+      <Label fx:id="note3" layoutX="243.0" layoutY="150.0" prefHeight="18.0" prefWidth="534.0" textFill="#15044e">
          <font>
             <Font name="Arial" size="13.0" />
          </font>

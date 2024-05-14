@@ -18,7 +18,7 @@ public class CourseEditApplication extends Application {
     public void start(Stage stage) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(CoursesSearchApplication.class.getResource("/app/CourseEdit/CourseEdit.fxml"));
         Scene scene = new Scene(fxmlLoader.load());
-        stage.setTitle("Hello!");
+        stage.setTitle("Course Edit Page");
         stage.setScene(scene);
         stage.setResizable(false);
         stage.show();

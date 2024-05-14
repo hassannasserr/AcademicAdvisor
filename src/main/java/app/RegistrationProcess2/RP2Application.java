@@ -18,7 +18,7 @@ public class RP2Application extends Application {
     public void start(Stage pstage) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(RegistrationProcessApplication.class.getResource("/app/RP2/RP2.fxml"));
         Scene scene = new Scene(fxmlLoader.load());
-        pstage.setTitle("Hello!");
+        pstage.setTitle("Registration Confirmation!");
         pstage.setScene(scene);
         pstage.setResizable(false);
         pstage.show();

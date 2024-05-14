@@ -16,7 +16,7 @@ public class RegistrationProcessApplication extends Application {
 @Override
     public void start(Stage pstage) throws IOException {
     FXMLLoader fxmlLoader = new FXMLLoader(RegistrationProcessApplication.class.getResource("/app/RegisterationProccess/RegistrationProcess.fxml"));       Scene scene = new Scene(fxmlLoader.load());
-        pstage.setTitle("Hello!");
+        pstage.setTitle("Registration Process!");
         pstage.setScene(scene);
         pstage.setResizable(false);
         pstage.show();

@@ -69,7 +69,7 @@
             <Image url="@inbox.png" />
          </image>
       </ImageView>
-      <Label fx:id="LogOut" layoutX="97.0" layoutY="514.0" prefHeight="18.0" prefWidth="146.0" text="Exit" textFill="#15044e">
+      <Label fx:id="Exit" layoutX="77.0" layoutY="513.0" prefHeight="19.0" prefWidth="166.0" text="Exit" textFill="#15044e">
          <font>
             <Font name="Arial" size="13.0" />
          </font>

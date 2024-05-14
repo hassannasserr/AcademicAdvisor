@@ -167,39 +167,7 @@ public class RegistrationProcessController extends StRegController {
             }
             if (!hasError) {
                 // Clear the text of the animation label
-                animation.setText("");
 
-                // Create a string for the animation text
-                String animationText = "Processing...";
-
-                // Create a timeline to animate the text
-                Timeline timeline = new Timeline();
-                for (int i = 0; i < animationText.length(); i++) {
-                    // Create a pause transition with a duration of 200 milliseconds
-                    PauseTransition pause = new PauseTransition(Duration.millis(200));
-
-                    // Set the action to perform after the pause
-                    int finalI = i;
-                    pause.setOnFinished(event3 -> {
-                        // Add one character to the animation label's text
-                        animation.setText(animation.getText() + animationText.charAt(finalI));
-                    });
-
-                    // Add the pause transition to the timeline
-                    timeline.getKeyFrames().add(new KeyFrame(Duration.millis(i * 200), pause.getOnFinished()));
-                }
-
-                // Set the action to perform after the timeline
-                timeline.setOnFinished(event4 -> {
-                    // Clear the error label
-                    error1.setText("");
-
-                    // Navigate to the next page here
-                    // ...
-                });
-
-                // Start the timeline
-                timeline.play();
                 Integer selectedSemester = Semesters1.getValue();
                 List<String> availableCourses = new ArrayList<>();
                 CourseGraph courseGraph = new CourseGraph();
@@ -224,8 +192,7 @@ public class RegistrationProcessController extends StRegController {
                 } catch (SQLException e) {
                     e.printStackTrace();
                 }
-                // after the animation ended navigate to the next page
-                // after the animation ended navigate to the next page
+
                 try {
                     Stage currentStage = (Stage) HomePage.getScene().getWindow();
                     currentStage.close();
@@ -304,7 +271,7 @@ public class RegistrationProcessController extends StRegController {
             try {
                 Stage currentStage = (Stage) HomePage.getScene().getWindow();
                 currentStage.close();
-                CourseSearchApplication coursesSearchApplication = new CourseSearchApplication();
+                CoursesSearchApplication coursesSearchApplication = new CoursesSearchApplication();
                 Stage newStage = new Stage();
                 coursesSearchApplication.start(newStage);
             } catch (Exception e) {

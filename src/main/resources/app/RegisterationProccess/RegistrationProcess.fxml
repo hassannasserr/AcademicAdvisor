@@ -131,7 +131,7 @@
             <Cursor fx:constant="HAND" />
          </cursor>
       </Button>
-      <Label fx:id="error" layoutX="412.0" layoutY="127.0" prefHeight="18.0" prefWidth="178.0" textFill="#df0e0e" />
+      <Label fx:id="error" alignment="CENTER" layoutX="370.0" layoutY="128.0" prefHeight="7.0" prefWidth="339.0" textFill="#df0e0e" />
       <Label layoutX="490.0" layoutY="256.0" prefHeight="34.0" prefWidth="271.0" text="If You Want to Continue please fill this fields" textFill="#15044e">
          <font>
             <Font name="Baskerville Old Face" size="15.0" />
@@ -147,7 +147,6 @@
             <Cursor fx:constant="TEXT" />
          </cursor>
       </TextField>
-      <Label layoutX="83.0" layoutY="119.0" text="Label" />
       <Label layoutX="470.0" layoutY="320.0" text="Student GPA" textFill="#15044e">
          <font>
             <Font name="Arial" size="12.0" />

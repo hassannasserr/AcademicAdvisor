@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="app.Student.StudentSearch.StudentSearchController">
+    <children>
+        <ImageView fitHeight="480.0" fitWidth="498.0" layoutX="243.0" layoutY="60.0" opacity="0.07" pickOnBounds="true" preserveRatio="true">
+            <image>
+                <Image url="@pngwing.com.png" />
+            </image>
+        </ImageView>
+        <Rectangle arcHeight="50.0" arcWidth="50.0" fill="WHITE" height="600.0" layoutX="-17.0" stroke="#e5e7e9" strokeType="INSIDE" width="228.0" />
+        <ImageView fitHeight="133.0" fitWidth="114.0" layoutX="46.0" layoutY="24.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@pngwing.com.png" />
+         </image></ImageView>
+        <Label layoutX="20.0" layoutY="150.0" text="Academic Advisor System" textFill="#15044e">
+            <font>
+                <Font name="Baskerville Old Face" size="16.0" />
+            </font>
+        </Label>
+        <ImageView fitHeight="30.0" fitWidth="41.0" layoutX="31.0" layoutY="259.0" pickOnBounds="true" preserveRatio="true">
+            <image>
+                <Image url="@home.png" />
+            </image>
+        </ImageView>
+        <Label fx:id="HomePage" layoutX="91.0" layoutY="266.0" text="Home Page" textFill="#15044e">
+            <font>
+                <Font name="Arial" size="13.0" />
+            </font>
+            <cursor>
+                <Cursor fx:constant="HAND" />
+            </cursor>
+        </Label>
+        <Label layoutY="177.0" prefHeight="18.0" prefWidth="216.0" text="--------------------------------------------" />
+        <Label fx:id="CourseSea" layoutX="74.0" layoutY="340.0" prefHeight="18.0" prefWidth="146.0" text="Courses Search" textFill="#15044e">
+            <font>
+                <Font name="Arial" size="13.0" />
+            </font>
+            <cursor>
+                <Cursor fx:constant="HAND" />
+            </cursor>
+        </Label>
+        <ImageView fitHeight="30.0" fitWidth="41.0" layoutX="31.0" layoutY="334.0" pickOnBounds="true" preserveRatio="true">
+            <image>
+                <Image url="@search-interface-symbol.png" />
+            </image>
+        </ImageView>
+        <Label fx:id="AnswerReq" layoutX="74.0" layoutY="424.0" prefHeight="18.0" prefWidth="146.0" text="Answer Requsets" textFill="#15044e">
+            <font>
+                <Font name="Arial" size="13.0" />
+            </font>
+            <cursor>
+                <Cursor fx:constant="HAND" />
+            </cursor>
+        </Label>
+        <ImageView fitHeight="30.0" fitWidth="41.0" layoutX="31.0" layoutY="418.0" pickOnBounds="true" preserveRatio="true">
+            <image>
+                <Image url="@inbox.png" />
+            </image>
+        </ImageView>
+        <Label fx:id="Exit" layoutX="87.0" layoutY="521.0" prefHeight="18.0" prefWidth="146.0" text="Exit" textFill="#15044e">
+            <font>
+                <Font name="Arial" size="13.0" />
+            </font>
+            <cursor>
+                <Cursor fx:constant="HAND" />
+            </cursor>
+        </Label>
+
+        <TableView fx:id="CourseTable" layoutX="209.0" layoutY="240.0" prefHeight="266.0" prefWidth="591.0" style="-fx-border-color: #C5C2F3; -fx-background-radius: 0; -fx-background-color: FFF;">
+            <columns>
+                <TableColumn fx:id="CodeCol" prefWidth="66.39994812011719" style="-fx-background-color: C5C2F3;" text="Code" />
+                <TableColumn fx:id="HourCol" prefWidth="31.2000732421875" style="-fx-background-color: C5C2F3;" text="H" />
+                <TableColumn fx:id="NameCol" prefWidth="161.5999755859375" style="-fx-background-color: C5C2F3;" text="Course name" />
+                <TableColumn fx:id="DepCol" prefWidth="98.4000244140625" style="-fx-background-color: C5C2F3;" text="Department" />
+                <TableColumn fx:id="SemsterCol" prefWidth="34.40008544921875" style="-fx-background-color: C5C2F3;" text="Semseter" />
+                <TableColumn fx:id="PrequesteCol" prefWidth="63.199951171875" style="-fx-background-color: C5C2F3;" text="Prequeste" />
+                <TableColumn fx:id="PrequesteCol2" prefWidth="63.19989013671875" style="-fx-background-color: C5C2F3;" text="Prequeste" />
+                <TableColumn fx:id="RateCol" prefWidth="76.8000366210938" style="-fx-background-color: #C5C2F3;" text="Rate" />
+            </columns>
+        </TableView>
+        <Rectangle arcHeight="50.0" arcWidth="50.0" fill="#15044e" height="55.0" layoutX="209.0" layoutY="178.0" stroke="BLACK" strokeType="INSIDE" width="575.0" />
+        <TextField fx:id="searchField" layoutX="220.0" layoutY="195.0" prefHeight="26.0" prefWidth="190.0" promptText="          Enter The course Name" style="-fx-background-radius: 50;" />
+        <ComboBox fx:id="Semester" layoutX="589.0" layoutY="195.0" prefHeight="26.0" prefWidth="178.0" promptText="Select Semseter" style="-fx-background-radius: 50; -fx-background-color: FFF;" />
+        <Label layoutX="403.0" layoutY="32.0" prefHeight="20.0" prefWidth="166.0" text="Courses Search" textFill="#15044e">
+            <font>
+                <Font name="Baskerville Old Face" size="24.0" />
+            </font>
+        </Label>
+        <Button fx:id="Search" layoutX="439.0" layoutY="195.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="114.0" style="-fx-background-radius: 50; -fx-background-color: C5C2F3;" text="Search">
+            <font>
+                <Font name="Arial" size="12.0" />
+            </font>
+        </Button>
+        <ImageView fx:id="img" fitHeight="19.0" fitWidth="22.0" layoutX="447.0" layoutY="199.0" pickOnBounds="true" preserveRatio="true">
+            <image>
+                <Image url="@search-interface-symbol.png" />
+            </image>
+        </ImageView>
+      <ImageView fitHeight="30.0" fitWidth="30.0" layoutX="38.0" layoutY="515.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../CoursesSearch/logout.png" />
+         </image>
+      </ImageView>
+    </children>
+</AnchorPane>

@@ -71,8 +71,6 @@ public class StRegController {
             else if (!StID.getText().matches("[0-9]+")) {
                 error.setText("Please enter a valid student ID");
             }
-
-
             else {
                 StringBuilder sb = new StringBuilder();
                 for (int i = 0; i < codeList.size(); i++) {
@@ -249,7 +247,7 @@ public class StRegController {
             try {
                 Stage currentStage = (Stage) HomePage.getScene().getWindow();
                 currentStage.close();
-                CourseSearchApplication coursesSearchApplication = new CourseSearchApplication();
+                CoursesSearchApplication coursesSearchApplication = new CoursesSearchApplication();
                 Stage newStage = new Stage();
                 coursesSearchApplication.start(newStage);
             } catch (Exception e) {

@@ -3,6 +3,7 @@ import app.AnswerRequests.AnswerRequestsApplication;
 import app.CourseEdit.CourseEditApplication;
 import app.CoursesSearch.CoursesSearchApplication;
 import app.Dashboard.DashBoardApplication;
+import app.Student.StudentSearch.StudentSearchApplication;
 import app.StudentRegisteration.StRegApplication;
 import app.login.LoginApplication;
 import javafx.fxml.FXML;
@@ -15,23 +16,19 @@ import java.util.Optional;
 
 public class StudentDashBoardController {
     @FXML
-    private Label HomePage;
+    private Button HomePage;
+
     @FXML
-    private Label StudentReg;
+    private Button CourseSea;
     @FXML
-    private Label CourseSea ;
-    @FXML
-    private Label EditCor;
-    @FXML
-    private Label AnswerReq;
-    @FXML
-    private Label LogOut;
+    private Button AnswerReq;
+
     @FXML
     void initialize() {
         DashBoard();
     }
         private void DashBoard() {
-            HomePage.setOnMouseClicked((event) -> {
+            HomePage.setOnAction((event) -> {
                 try {
                     Stage currentStage = (Stage) HomePage.getScene().getWindow();
                     currentStage.close();
@@ -42,18 +39,18 @@ public class StudentDashBoardController {
                     e.printStackTrace();
                 }
             });
-            CourseSea.setOnMouseClicked((event) -> {
+            CourseSea.setOnAction((event) -> {
                 try {
                     Stage currentStage = (Stage) HomePage.getScene().getWindow();
                     currentStage.close();
-                    CoursesSearchApplication coursesSearchApplication = new CoursesSearchApplication();
+                    StudentSearchApplication coursesSearchApplication = new StudentSearchApplication();
                     Stage newStage = new Stage();
                     coursesSearchApplication.start(newStage);
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
             });
-            AnswerReq.setOnMouseClicked((event) -> {
+            AnswerReq.setOnAction((event) -> {
                 try {
                     Stage currentStage = (Stage) HomePage.getScene().getWindow();
                     currentStage.close();
@@ -64,24 +61,37 @@ public class StudentDashBoardController {
                     e.printStackTrace();
                 }
             });
-            LogOut.setOnMouseClicked((event) -> {
-                Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
-                alert.setTitle("Confirmation Logout");
-                alert.setHeaderText("Are you sure you want to log out?");
-                alert.setContentText("Choose your option.");
-                Optional<ButtonType> result = alert.showAndWait();
-                if (result.isPresent() && result.get() == ButtonType.OK){
-                    try {
-                        Stage currentStage = (Stage) LogOut.getScene().getWindow();
-                        currentStage.close();
-                        LoginApplication loginApplication = new LoginApplication();
-                        Stage newStage = new Stage();
-                        loginApplication.start(newStage);
-                    } catch (Exception e) {
-                        e.printStackTrace();
-                    }
-                }
+            HomePage.setOnMouseEntered((event) -> {
+              HomePage.setOpacity(0.5);
+              HomePage.setScaleX(1.1);
+              HomePage.setScaleY(1.1);
             });
+            HomePage.setOnMouseExited((event) -> {
+              HomePage.setOpacity(1);
+              HomePage.setScaleX(1);
+              HomePage.setScaleY(1);
+            });
+            CourseSea.setOnMouseEntered((event) -> {
+              CourseSea.setOpacity(0.5);
+              CourseSea.setScaleX(1.1);
+              CourseSea.setScaleY(1.1);
+            });
+            CourseSea.setOnMouseExited((event) -> {
+              CourseSea.setOpacity(1);
+              CourseSea.setScaleX(1);
+              CourseSea.setScaleY(1);
+            });
+            AnswerReq.setOnMouseEntered((event) -> {
+              AnswerReq.setOpacity(0.5);
+              AnswerReq.setScaleX(1.1);
+              AnswerReq.setScaleY(1.1);
+            });
+            AnswerReq.setOnMouseExited((event) -> {
+              AnswerReq.setOpacity(1);
+              AnswerReq.setScaleX(1);
+              AnswerReq.setScaleY(1);
+            });
+
         }
 
 }

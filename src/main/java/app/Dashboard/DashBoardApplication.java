@@ -15,7 +15,7 @@ public class DashBoardApplication extends Application {
     public void start(Stage stage) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(DashBoardApplication.class.getResource("Dashboard.fxml"));
         Scene scene = new Scene(fxmlLoader.load());
-        stage.setTitle("Student Asking Questions!");
+        stage.setTitle("Home Page!");
         stage.setScene(scene);
         stage.setResizable(false);
         stage.show();

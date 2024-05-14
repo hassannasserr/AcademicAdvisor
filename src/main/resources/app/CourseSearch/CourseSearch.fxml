@@ -145,5 +145,10 @@
             <Cursor fx:constant="HAND" />
          </cursor>
       </Button>
+      <ImageView fx:id="backs" fitHeight="42.0" fitWidth="43.0" layoutX="220.0" layoutY="26.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@fast-backward.png" />
+         </image>
+      </ImageView>
     </children>
 </AnchorPane>

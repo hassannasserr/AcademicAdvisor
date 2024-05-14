@@ -93,7 +93,8 @@ public class RP2Controller {
         });
         Coruses.setEditable(false);
         if (GPA < 2.0) {
-            note3.setText("You only can take 12 credit hours");
+            double d=2.0-GPA;
+            note3.setText("You only can take 12 credit hours and you need to raise your GPA by "+d +" To be above 2");
         }
         else if (GPA >= 3.0) {
             note3.setText("You can take 18 credit hours");
@@ -103,31 +104,52 @@ public class RP2Controller {
         }
        else if(semester== 2){
           int H=18-Hours;
+          if(H<0)
+              note1.setText("You are in the same progress with Your colleagues");
+          else
             note1.setText("You need to finish " +H+" Hours to meet Your colleagues");
         }
         else if(semester== 3){
             int H=36-Hours;
-            note1.setText("You need to finish " +H+" Hours to meet Your colleagues");
+            if(H<0)
+                note1.setText("You are in the same progress with Your colleagues");
+            else
+                note1.setText("You need to finish " +H+" Hours to meet Your colleagues");
         }
         else if(semester== 4){
             int H=54-Hours;
-            note1.setText("You need to finish " +H+" Hours to meet Your colleagues");
+             if(H<0)
+                note1.setText("You are in the same progress with Your colleagues");
+            else
+                note1.setText("You need to finish " +H+" Hours to meet Your colleagues");
         }
         else if(semester== 5){
             int H=72-Hours;
-            note1.setText("You need to finish " +H+" Hours to meet Your colleagues");
+            if(H<0)
+                note1.setText("You are in the same progress with Your colleagues");
+            else
+                note1.setText("You need to finish " +H+" Hours to meet Your colleagues");
         }
         else if(semester== 6){
             int H=87-Hours;
-            note1.setText("You need to finish " +H+" Hours to meet Your colleagues");
+            if(H<0)
+                note1.setText("You are in the same progress with Your colleagues");
+            else
+                note1.setText("You need to finish " +H+" Hours to meet Your colleagues");
         }
         else if(semester== 7){
             int H=102-Hours;
-            note1.setText("You need to finish " +H+" Hours to meet Your colleagues");
+            if(H<0)
+                note1.setText("You are in the same progress with Your colleagues");
+            else
+                note1.setText("You need to finish " +H+" Hours to meet Your colleagues");
         }
         else if(semester== 8){
             int H=117-Hours;
-            note1.setText("You need to finish " +H+" Hours to meet Your colleagues");
+            if(H<0)
+                note1.setText("You are in the same progress with Your colleagues");
+            else
+                note1.setText("You need to finish " +H+" Hours to meet Your colleagues");
         }
        if(GPA<2.0)
        {
@@ -307,7 +329,7 @@ public class RP2Controller {
             try {
                 Stage currentStage = (Stage) HomePage.getScene().getWindow();
                 currentStage.close();
-                CourseSearchApplication coursesSearchApplication = new CourseSearchApplication();
+                CoursesSearchApplication coursesSearchApplication = new CoursesSearchApplication();
                 Stage newStage = new Stage();
                 coursesSearchApplication.start(newStage);
             } catch (Exception e) {

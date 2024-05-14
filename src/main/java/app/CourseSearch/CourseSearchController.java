@@ -72,6 +72,8 @@ public class CourseSearchController {
     @FXML
     ImageView Search;
     @FXML
+    private ImageView backs;
+    @FXML
     private Button Export;
 
     @FXML
@@ -197,6 +199,27 @@ public class CourseSearchController {
                     }
                 }
             }
+        });
+        backs.setOnMouseClicked((event) -> {
+            try {
+                Stage currentStage = (Stage) backs.getScene().getWindow();
+                currentStage.close();
+                CoursesSearchApplication coursesSearchApplication = new CoursesSearchApplication();
+                Stage newStage = new Stage();
+                coursesSearchApplication.start(newStage);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        });
+        backs.setOnMouseEntered((event) -> {
+            backs.setOpacity(0.5);
+            backs.setScaleX(1.1);
+            backs.setScaleY(1.1);
+        });
+        backs.setOnMouseExited((event) -> {
+            backs.setOpacity(1);
+            backs.setScaleX(1);
+            backs.setScaleY(1);
         });
     }
 

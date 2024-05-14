@@ -336,44 +336,7 @@ try {
     }
     private boolean isValid(int semester, String prerequisite1, String prerequisite2, int courseHour, String rate) {
         // Check if semester is between 1 and 8
-        if (semester < 1 || semester > 8) {
-            return false;
-        }
 
-        // Check if courseHour is between 1 and 3
-        if (courseHour < 1 || courseHour > 3) {
-            return false;
-        }
-
-        // Check if rate is "Easy", "Medium", "Hard", or "None"
-        if (!rate.equals("Easy") && !rate.equals("Medium") && !rate.equals("Hard") && !rate.equals("None")) {
-            return false;
-        }
-
-        try {
-            Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/project_schema", "root", "DmjJ8GE_ps.up4J");
-            Statement statement = conn.createStatement();
-
-            // Check if prerequisite1 exists in the CourseCode field of any course
-            if (prerequisite1 != null && !prerequisite1.equals("None")) {
-                ResultSet resultSet1 = statement.executeQuery("SELECT * FROM courses WHERE CourseCode = '" + prerequisite1 + "'");
-                if (!resultSet1.next()) {
-                    return false;
-                }
-            }
-
-            // Check if prerequisite2 exists in the CourseCode field of any course
-            if (prerequisite2 != null && !prerequisite2.equals("None")) {
-                ResultSet resultSet2 = statement.executeQuery("SELECT * FROM courses WHERE CourseCode = '" + prerequisite2 + "'");
-                if (!resultSet2.next()) {
-                    return false;
-                }
-            }
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
-        }
-
-        // If all checks pass, return true
         return true;
     }
     @FXML

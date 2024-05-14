@@ -2,6 +2,7 @@ package app.CoursesSearch;
 
 import app.AnswerRequests.AnswerRequestsApplication;
 import app.CourseEdit.CourseEditApplication;
+import app.CourseSearch.CourseSearchApplication;
 import app.Dashboard.DashBoardApplication;
 import app.StudentRegisteration.StRegApplication;
 import app.login.LoginApplication;
@@ -28,6 +29,8 @@ public class CoursesSearchController {
     private Label AnswerReq;
     @FXML
     private Label LogOut;
+    @FXML
+    private Button Cou2;
     @FXML
     private TableView<Course> CourseTable;
     @FXML
@@ -101,6 +104,27 @@ public class CoursesSearchController {
                      throw new RuntimeException(e);
                  }
              }});
+        Cou2.setOnAction((event) -> {
+            try {
+                Stage currentStage = (Stage) Cou2.getScene().getWindow();
+                currentStage.close();
+                CourseSearchApplication courseSearchApplication = new CourseSearchApplication();
+                Stage newStage = new Stage();
+                courseSearchApplication.start(newStage);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        });
+        Cou2.setOnMouseEntered((event) -> {
+            Cou2.setOpacity(0.5);
+            Cou2.setScaleX(1.1);
+            Cou2.setScaleY(1.1);
+        });
+        Cou2.setOnMouseExited((event) -> {
+            Cou2.setOpacity(1);
+            Cou2.setScaleX(1);
+            Cou2.setScaleY(1);
+        });
 
 
     }
@@ -180,5 +204,6 @@ public class CoursesSearchController {
                 }
             }
         });
+
     }
 }

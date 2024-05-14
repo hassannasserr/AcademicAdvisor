@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
@@ -10,73 +11,77 @@
 
 <AnchorPane prefHeight="600.0" prefWidth="800.0" style="-fx-background-color: #E5E7E9;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="app.Student.StudentDashBoardController">
    <children>
-      <ImageView fitHeight="480.0" fitWidth="498.0" layoutX="243.0" layoutY="60.0" opacity="0.07" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="480.0" fitWidth="498.0" layoutX="273.0" layoutY="60.0" opacity="0.07" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@pngwing.com.png" />
          </image>
       </ImageView>
-      <Rectangle arcHeight="50.0" arcWidth="50.0" fill="WHITE" height="600.0" layoutX="-17.0" stroke="#e5e7e9" strokeType="INSIDE" width="228.0" />
-      <ImageView fitHeight="133.0" fitWidth="114.0" layoutX="46.0" layoutY="24.0" pickOnBounds="true" preserveRatio="true">
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="102.0" layoutX="-8.0" stroke="#e5e7e9" strokeType="INSIDE" width="815.0" />
+      <ImageView fitHeight="84.0" fitWidth="80.0" layoutX="14.0" layoutY="4.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../login/pngwing.com.png" />
          </image>
       </ImageView>
-      <Label layoutX="20.0" layoutY="150.0" text="Academic Advisor System" textFill="#15044e">
+      <Label layoutX="258.0" layoutY="44.0" prefHeight="30.0" prefWidth="303.0" text="Academic Advisor System" textFill="#15044e">
          <font>
-            <Font name="Baskerville Old Face" size="16.0" />
+            <Font name="Baskerville Old Face" size="26.0" />
          </font>
       </Label>
-      <ImageView fitHeight="30.0" fitWidth="41.0" layoutX="31.0" layoutY="218.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@home.png" />
-         </image>
-      </ImageView>
-      <Label fx:id="HomePage" layoutX="74.0" layoutY="225.0" text="Home Page" textFill="#15044e">
+      <Label layoutX="291.0" layoutY="73.0" prefHeight="18.0" prefWidth="216.0" text="--------------------------------------------" />
+      <Label layoutX="291.0" layoutY="24.0" prefHeight="18.0" prefWidth="216.0" text="--------------------------------------------" />
+      <Button fx:id="HomePage" layoutX="144.0" layoutY="344.0" mnemonicParsing="false" prefHeight="38.0" prefWidth="146.0" style="-fx-background-color: #15044e; -fx-background-radius: 50;" text="Home Page" textFill="WHITE">
          <font>
-            <Font name="Arial" size="13.0" />
+            <Font name="Arial" size="12.0" />
          </font>
          <cursor>
             <Cursor fx:constant="HAND" />
          </cursor>
-      </Label>
-      <Label layoutY="177.0" prefHeight="18.0" prefWidth="216.0" text="--------------------------------------------" />
-      <Label fx:id="CourseSea" layoutX="69.0" layoutY="318.0" prefHeight="18.0" prefWidth="146.0" text="Courses Search" textFill="#15044e">
+         <graphic>
+            <ImageView fitHeight="30.0" fitWidth="41.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@home.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </Button>
+      <Button fx:id="CourseSea" layoutX="318.0" layoutY="344.0" mnemonicParsing="false" prefHeight="38.0" prefWidth="146.0" style="-fx-background-color: #15044e; -fx-background-radius: 50;" text="Course Search" textFill="WHITE">
          <font>
-            <Font name="Arial" size="13.0" />
+            <Font name="Arial" size="12.0" />
          </font>
          <cursor>
             <Cursor fx:constant="HAND" />
          </cursor>
-      </Label>
-      <ImageView fitHeight="30.0" fitWidth="41.0" layoutX="31.0" layoutY="312.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@search-interface-symbol.png" />
-         </image>
-      </ImageView>
-      <Label fx:id="AnswerReq" layoutX="69.0" layoutY="416.0" prefHeight="18.0" prefWidth="146.0" text="Answer Requsets" textFill="#15044e">
+         <graphic>
+            <ImageView fx:id="CourseSea1" fitHeight="30.0" fitWidth="41.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@search.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </Button>
+      <Label layoutX="62.0" layoutY="173.0" prefHeight="38.0" prefWidth="256.0" text="Welcome Student" textFill="#15044e">
          <font>
-            <Font name="Arial" size="13.0" />
+            <Font name="Baskerville Old Face" size="32.0" />
+         </font>
+      </Label>
+      <Button fx:id="AnswerReq" layoutX="479.0" layoutY="344.0" mnemonicParsing="false" prefHeight="38.0" prefWidth="205.0" style="-fx-background-color: #15044e; -fx-background-radius: 50;" text="Send Requests" textFill="WHITE">
+         <font>
+            <Font name="Arial" size="12.0" />
          </font>
          <cursor>
             <Cursor fx:constant="HAND" />
          </cursor>
-      </Label>
-      <ImageView fitHeight="30.0" fitWidth="41.0" layoutX="31.0" layoutY="410.0" pickOnBounds="true" preserveRatio="true">
+         <graphic>
+            <ImageView fitHeight="30.0" fitWidth="41.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@724715.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </Button>
+      <ImageView fitHeight="53.0" fitWidth="57.0" layoutX="318.0" layoutY="166.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@inbox.png" />
-         </image>
-      </ImageView>
-      <Label fx:id="LogOut" layoutX="97.0" layoutY="514.0" prefHeight="18.0" prefWidth="146.0" text="Exit" textFill="#15044e">
-         <font>
-            <Font name="Arial" size="13.0" />
-         </font>
-         <cursor>
-            <Cursor fx:constant="HAND" />
-         </cursor>
-      </Label>
-      <ImageView fitHeight="30.0" fitWidth="41.0" layoutX="31.0" layoutY="508.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@logout.png" />
+            <Image url="@waving-hand.png" />
          </image>
       </ImageView>
    </children>

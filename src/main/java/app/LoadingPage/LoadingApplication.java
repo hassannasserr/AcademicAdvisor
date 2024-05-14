@@ -16,7 +16,7 @@ public class LoadingApplication extends Application {
     public void start(Stage primaryStage) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(LoadingApplication.class.getResource("LoadingPage.fxml"));
         Scene scene = new Scene(fxmlLoader.load());
-        primaryStage.setTitle("Hello!");
+        primaryStage.setTitle("Loading Page!");
         primaryStage.setScene(scene);
         primaryStage.setResizable(false);
         primaryStage.show();
