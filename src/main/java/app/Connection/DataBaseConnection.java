@@ -18,6 +18,22 @@ public class DataBaseConnection {
             Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/project_schema", "root", "DmjJ8GE_ps.up4J");
             Statement statement = connection.createStatement();
             ResultSet resultSet = statement.executeQuery("SELECT * FROM Advisor WHERE AdvisorID = '" + jobnum4+ "' AND AdvisorPwd = '" + pincode + "'");
+
+
+            if (resultSet.next()) {
+                login = true;
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return login;
+    }
+    public boolean login2(int jobnum4, String pincode) {
+        boolean login = false;
+        try {
+            Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/project_schema", "root", "DmjJ8GE_ps.up4J");
+            Statement statement = connection.createStatement();
+            ResultSet resultSet = statement.executeQuery("SELECT * FROM adminstrator WHERE AdminstratorID = '" + jobnum4+ "' AND AdminstratorPwd = '" + pincode + "'");
             if (resultSet.next()) {
                 login = true;
             }

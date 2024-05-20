@@ -17,6 +17,14 @@ module com.example.academicadvisor {
     opens app.RegistrationProcess2 to javafx.fxml;
     opens app.CourseSearch to javafx.fxml;
     opens app.Student.StudentSearch to javafx.fxml;
+    opens app.LoadingPage2 to javafx.fxml;
+    opens app.Administrator to javafx.fxml;
+    opens app.AdvisorList to javafx.fxml;
+    opens app.AddAdvisor to javafx.fxml;
+    exports app.AddAdvisor;
+    exports app.AdvisorList;
+    exports app.LoadingPage2;
+    exports app.Administrator;
     exports app.login;
     exports app.CoursesSearch;
     exports app.Dashboard;

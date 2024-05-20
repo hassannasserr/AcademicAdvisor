@@ -180,8 +180,6 @@ public class RegistrationProcessController extends StRegController {
                     while (rs.next()) {
                         semesterCourses.add(rs.getString("CourseCode"));
                     }
-
-
                     List<String> courseCodes = courseGraph.getAvailableCourses(semesterCourses, codeList);
                     for (String courseCode : courseCodes) {
                         availableCourses.add(getCourseNameByCode(courseCode));

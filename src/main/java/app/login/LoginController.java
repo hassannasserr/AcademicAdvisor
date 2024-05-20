@@ -2,6 +2,7 @@ package app.login;
 
 import app.Connection.DataBaseConnection;
 import app.LoadingPage.LoadingApplication;
+import app.LoadingPage2.LoadingPageApplication;
 import app.Student.StudentDashBoardApllication;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -35,7 +36,6 @@ public class LoginController extends DataBaseConnection {
 
             else {
                 int jobnum4 = Integer.parseInt(jobnum.getText());
-                        dataBaseConnection.connect();
                         if (dataBaseConnection.login(jobnum4, pincode.getText())){
                             Stage stage = (Stage) action.getScene().getWindow();
                             stage.close();
@@ -44,8 +44,18 @@ public class LoginController extends DataBaseConnection {
                             } catch (IOException e) {
                                 throw new RuntimeException(e);
                             }
-                        } else {
-                            wrong.setText("Wrong job number or pin code");
+                        } else if (dataBaseConnection.login2(jobnum4, pincode.getText())){
+                            Stage stage = (Stage) action.getScene().getWindow();
+                            stage.close();
+                            try {
+                                LoadingPageApplication loadingPageApplication = new LoadingPageApplication();
+                                loadingPageApplication.start(new Stage());
+                            } catch (IOException e) {
+                                throw new RuntimeException(e);
+                            }
+                        }
+                        else {
+                            wrong.setText("Wrong Job Number or Pin Code");
                         }
                     }
         });

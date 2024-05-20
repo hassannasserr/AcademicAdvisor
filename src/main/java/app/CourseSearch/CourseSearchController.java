@@ -98,8 +98,7 @@ public class CourseSearchController {
                 // Create an instance of CourseGraph
                 CourseGraph courseGraph = new CourseGraph();
 
-                // Get the prerequisites of the course
-                List<String> prerequisites = courseGraph.getPrerequisites1(courseName);
+                List<String> prerequisites = courseGraph.getPrerequisites(courseName);
 
                 // Check if the course was not found or has no prerequisites
                 if (prerequisites == null) {
@@ -114,7 +113,7 @@ public class CourseSearchController {
                         prerequisiteNames.add(stRegController.getCourseNameByCode(courseCode));
                     }
 
-                    StringBuilder prerequisitesString = new StringBuilder("The course is prerequisites for  \"" + courseName + "\":\n");
+                    StringBuilder prerequisitesString = new StringBuilder("The course is prerequisites for  \"" + stRegController.getCourseNameByCode(courseName) + "\":\n");
                     for (int i = 0; i < prerequisiteNames.size(); i++) {
                         prerequisitesString.append((i + 1) + "- " + prerequisiteNames.get(i) + "\n");
                     }
