@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ProgressBar?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Polyline?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="600.0" prefWidth="800.0" style="-fx-background-color: #E5E7E9;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="app.LoadingPage2.LoadingPageController">
+   <children>
+      <ImageView fitHeight="514.0" fitWidth="532.0" layoutX="161.0" layoutY="43.0" opacity="0.07" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@pngwing.com.png" />
+         </image>
+      </ImageView>
+      <ProgressBar fx:id="PrBar" layoutX="172.0" layoutY="300.0" prefHeight="35.0" prefWidth="434.0" progress="0.0" style="-fx-background-radius: 15;" />
+      <Label fx:id="load" alignment="CENTER" contentDisplay="CENTER" layoutX="227.0" layoutY="207.0" prefHeight="53.0" prefWidth="324.0" textFill="#15044e">
+         <font>
+            <Font name="Baskerville Old Face" size="44.0" />
+         </font>
+      </Label>
+      <Label fx:id="msg" alignment="CENTER" contentDisplay="CENTER" layoutX="295.0" layoutY="361.0" prefHeight="18.0" prefWidth="209.0" textFill="#15044e">
+         <font>
+            <Font name="Arial Italic" size="12.0" />
+         </font>
+      </Label>
+      <Polyline fill="#15044e" layoutX="62.0" layoutY="109.0" points="-87.5999984741211, -44.19999694824219, 750.0, -91.40000915527344, 750.0, -109.0, -61.99999237060547, -109.0" strokeType="INSIDE" />
+      <Polyline fill="#c5c2f3" layoutX="77.0" layoutY="502.0" points="-74.0, 97.5999755859375, -73.99999237060547, 87.60003662109375, 735.5999755859375, 50.79998779296875, 735.5999755859375, 98.0" strokeType="INSIDE" />
+   </children>
+</AnchorPane>
