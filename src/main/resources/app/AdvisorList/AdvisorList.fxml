@@ -54,7 +54,7 @@
         </Label>
         <ImageView fitHeight="30.0" fitWidth="41.0" layoutX="31.0" layoutY="294.0" pickOnBounds="true" preserveRatio="true">
             <image>
-                <Image url="@editing.png" />
+                <Image url="@user.png" />
             </image>
         </ImageView>
         <Label fx:id="Advisor" layoutX="74.0" layoutY="432.0" prefHeight="18.0" prefWidth="146.0" text="Open As Advisor" textFill="#15044e">
@@ -101,7 +101,7 @@
                 <Font name="Arial" size="12.0" />
             </font>
         </Label>
-        <Label fx:id="error" alignment="CENTER" layoutX="357.0" layoutY="99.0" prefHeight="19.0" prefWidth="228.0" textFill="RED" />
+        <Label fx:id="error" alignment="CENTER" contentDisplay="CENTER" layoutX="357.0" layoutY="98.0" prefHeight="19.0" prefWidth="228.0" textFill="RED" />
         <Label fx:id="Success" alignment="CENTER" layoutX="349.0" layoutY="80.0" prefHeight="18.0" prefWidth="274.0" textFill="GREEN" />
         <Label layoutX="243.0" layoutY="300.0" prefHeight="18.0" prefWidth="108.0" text="Email" textFill="WHITE">
             <font>
@@ -127,7 +127,7 @@
             <Image url="@list.png" />
          </image>
       </ImageView>
-      <TextField fx:id="id" layoutX="260.0" layoutY="437.0" promptText="Enter Advisor ID" style="-fx-background-radius: 50;">
+      <TextField fx:id="id" layoutX="247.0" layoutY="434.0" promptText="Enter Advisor ID" style="-fx-background-radius: 50;">
          <cursor>
             <Cursor fx:constant="TEXT" />
          </cursor>

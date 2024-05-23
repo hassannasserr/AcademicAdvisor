@@ -81,7 +81,7 @@
                 <Image url="@logout.png" />
             </image>
         </ImageView>
-        <Label alignment="CENTER" layoutX="322.0" layoutY="24.0" prefHeight="36.0" prefWidth="297.0" text="Add Advisor" textFill="#15044e">
+        <Label alignment="CENTER" layoutX="310.0" layoutY="24.0" prefHeight="36.0" prefWidth="297.0" text="Add Advisor" textFill="#15044e">
             <font>
                 <Font name="Baskerville Old Face" size="29.0" />
             </font>
@@ -126,7 +126,7 @@
             <Font name="Arial" size="12.0" />
          </font>
       </Label>
-      <TextField fx:id="GraduationYear" layoutX="471.0" layoutY="254.0" prefHeight="26.0" prefWidth="180.0" promptText="mm/dd/yyyy" style="-fx-background-radius: 50;" />
+      <TextField fx:id="GraduationYear" layoutX="471.0" layoutY="254.0" prefHeight="26.0" prefWidth="180.0" promptText="Year" style="-fx-background-radius: 50;" />
       <TextField fx:id="id" layoutX="243.0" layoutY="388.0" prefHeight="26.0" prefWidth="180.0" style="-fx-background-radius: 50;" />
       <Label layoutX="243.0" layoutY="366.0" prefHeight="18.0" prefWidth="108.0" text="ID" textFill="WHITE">
          <font>
@@ -148,7 +148,10 @@
          </cursor>
       </Button>
       <Label fx:id="error" alignment="CENTER" layoutX="357.0" layoutY="99.0" prefHeight="19.0" prefWidth="228.0" textFill="RED" />
-      <Label fx:id="Success" alignment="CENTER" layoutX="349.0" layoutY="80.0" prefHeight="18.0" prefWidth="274.0" textFill="GREEN" />
+      <Label fx:id="Success" alignment="CENTER" contentDisplay="CENTER" layoutX="286.0" layoutY="89.0" prefHeight="20.0" prefWidth="312.0" textFill="GREEN">
+         <font>
+            <Font name="Arial" size="12.0" />
+         </font></Label>
       <TextField fx:id="email" layoutX="243.0" layoutY="320.0" prefHeight="26.0" prefWidth="180.0" promptText="Advisor Email" style="-fx-background-radius: 50;" />
       <Label layoutX="243.0" layoutY="300.0" prefHeight="18.0" prefWidth="108.0" text="Email" textFill="WHITE">
          <font>
@@ -163,7 +166,7 @@
       </Label>
       <ImageView fitHeight="30.0" fitWidth="41.0" layoutX="31.0" layoutY="294.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../Administrator/3018944.png" />
+            <Image url="@user.png" />
          </image>
       </ImageView>
       <Label fx:id="AddAdvisor" layoutX="74.0" layoutY="300.0" prefHeight="18.0" prefWidth="146.0" text="Add Advisor" textFill="#15044e">

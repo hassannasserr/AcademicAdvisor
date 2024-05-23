@@ -96,6 +96,20 @@ public class CourseEditController {
         error.setText("");
         success.setText("");
     }
+    private void resetFields2() {
+        // Clear all text fields
+        codefield.clear();
+        hourfield.clear();
+        namefield.clear();
+        depart.clear();
+        semesterfield.clear();
+        pre1.clear();
+        pre2.clear();
+        ratefield.clear();
+        // Clear labels
+        error.setText("");
+       // success.setText("");
+    }
     private void addCourse() {
         String courseCode = codefield.getText();
         String courseHour = hourfield.getText();
@@ -113,7 +127,7 @@ public class CourseEditController {
             return;
         }
         // check the Course Code if it already found in the database or not
-try {
+        try {
             Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/project_schema", "root", "DmjJ8GE_ps.up4J");
             Statement statement = conn.createStatement();
             ResultSet resultSet = statement.executeQuery("SELECT * FROM courses WHERE CourseCode = '" + courseCode + "'");
@@ -158,7 +172,7 @@ try {
                 resetFields();
                 success.setText(courseName + " is added");
                 error.setText("");
-                resetFields();
+                //resetFields();
             } catch (SQLException e) {
                 throw new RuntimeException(e);
             }
@@ -175,7 +189,7 @@ try {
                 statement.setString(6, coursePrequeste2);
                 statement.setString(7, courseRate);
                 statement.executeUpdate();
-                resetFields();
+              //  resetFields();
                 success.setText(courseName + " is added");
                 error.setText("");
             } catch (SQLException e) {
@@ -194,7 +208,7 @@ try {
                 statement.setString(6, coursePrequeste1);
                 statement.setString(7, courseRate);
                 statement.executeUpdate();
-                resetFields();
+               // resetFields();
                 success.setText(courseName + " is added");
                 error.setText("");
             } catch (SQLException e) {
@@ -225,7 +239,7 @@ try {
                     statement.setString(7, coursePrequeste2);
                     statement.setString(8, courseRate);
                     statement.executeUpdate();
-                    resetFields();
+                    //resetFields();
                     success.setText(courseName + " is added");
                     error.setText("");
                 } catch (SQLException e) {
@@ -327,7 +341,7 @@ try {
             }
             finally {
                 // After deleting the course, reset the fields
-                resetFields();
+                //resetFields();
             }
         } else {
             // Reset the fields if the user cancels the operation
